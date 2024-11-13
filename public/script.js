@@ -1,3 +1,29 @@
+// Theme Management
+const darkModeToggle = document.getElementById('darkModeToggle');
+const html = document.documentElement;
+
+// Load theme from localStorage
+const loadTheme = () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+        darkModeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+};
+
+// Toggle theme
+const toggleTheme = () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    darkModeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+};
+
+// Event listener for theme toggle
+darkModeToggle.addEventListener('click', toggleTheme);
+
 // Sample movie data (in a real app, this would come from an API)
 const sampleMovies = [
     {
@@ -79,7 +105,8 @@ searchInput.addEventListener('keypress', (e) => {
     }
 });
 
-// Initial display of movies
+// Initial setup
 window.addEventListener('load', () => {
+    loadTheme(); // Load saved theme
     displayMovies(sampleMovies);
 });

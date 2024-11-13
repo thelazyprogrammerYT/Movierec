@@ -4,10 +4,27 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-primary: #f0f2f5;
+    --bg-secondary: #fff;
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --shadow: rgba(0,0,0,0.1);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --shadow: rgba(0,0,0,0.3);
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f0f2f5;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -16,18 +33,42 @@ body {
     padding: 20px;
 }
 
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--shadow);
+}
+
 header {
     text-align: center;
     padding: 40px 0;
-    background-color: #fff;
+    background-color: var(--bg-secondary);
     border-radius: 8px;
     margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 header h1 {
-    color: #2c3e50;
+    color: var(--text-primary);
     margin-bottom: 10px;
+}
+
+header p {
+    color: var(--text-secondary);
 }
 
 .search-section {
@@ -43,6 +84,8 @@ header h1 {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 #searchBtn {
@@ -61,14 +104,14 @@ header h1 {
 }
 
 .recommendations {
-    background-color: #fff;
+    background-color: var(--bg-secondary);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 .recommendations h2 {
-    color: #2c3e50;
+    color: var(--text-primary);
     margin-bottom: 20px;
 }
 
@@ -80,10 +123,10 @@ header h1 {
 }
 
 .movie-card {
-    background-color: #fff;
+    background-color: var(--bg-secondary);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px var(--shadow);
     transition: transform 0.3s;
 }
 
@@ -102,12 +145,12 @@ header h1 {
 }
 
 .movie-info h3 {
-    color: #2c3e50;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .movie-info p {
-    color: #7f8c8d;
+    color: var(--text-secondary);
     font-size: 14px;
 }
 
@@ -115,5 +158,5 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 40px;
-    color: #7f8c8d;
+    color: var(--text-secondary);
 }
